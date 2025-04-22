@@ -18,7 +18,7 @@ export const Users: CollectionConfig = {
     update: adminsAndUser,
     // Only admins can delete
     delete: admins,
-    // only admins can access the admin UI
+    //  only admins can access the admin UI
     admin: ({ req: { user } }) => {
       if (!user) {
         return false
@@ -27,10 +27,30 @@ export const Users: CollectionConfig = {
       }
     },
   },
-
   fields: [
     // Email added by default
-    // Add more fields as needed
+    {
+      name: 'Name',
+      type: 'text',
+      required: true,
+    },
+    {
+      name: 'roles',
+      type: 'select',
+      hasMany: true,
+      defaultValue: ['user'],
+      saveToJWT: true,
+      options: [
+        {
+          label: 'Owner',
+          value: 'admin',
+        },
+        {
+          label: 'Staff',
+          value: 'user',
+        },
+      ],
+    },
   ],
 }
 
