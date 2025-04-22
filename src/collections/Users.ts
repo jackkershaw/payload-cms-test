@@ -19,7 +19,13 @@ export const Users: CollectionConfig = {
     // Only admins can delete
     delete: admins,
     // only admins can access the admin UI
-    admin: ({ req: { user } }) => checkRole(['admin'], user),
+    admin: ({ req: { user } }) => {
+      if (!user) {
+        return false
+      } else {
+        return checkRole(['admin'], user)
+      }
+    },
   },
 
   fields: [
