@@ -53,17 +53,3 @@ export const Users: CollectionConfig = {
     },
   ],
 }
-
-// Events Access
-
-// - **Create**: Allowed for Owner and Staff
-// - **Read**: Owner accesses all events; Staff only their own (via createdBy)
-// - **Update**: Owner updates all events; Staff only their own
-// - **Delete**: Allowed only for Owner
-
-// Pages Access
-
-// - **Create**: Allowed for Owner and Staff
-// - **Read**: Allowed for Owner and Staff
-// - **Update**: Allowed for Owner and Staff
-// - **Delete**: Allowed only for the Owner
