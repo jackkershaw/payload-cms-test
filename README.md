@@ -28,9 +28,30 @@
       - setting options based on the example from the access docs and our specifications: Select, Required
       - labels for roles - admin is Owner and user is Staff
       - set the default role to Staff (user)
-- Added a pages.ts collection:
-  - Cloned the Users collection to use as a base
-  - Added it as a collection to payload config file
-- Added an events.ts collection:
-  - Cloned the Users collection to use as a base
-  - Added it as a collection to payload config file
+
+6. Read the docs on [collection configs](https://payloadcms.com/docs/configuration/collections)
+7. Added a pages.ts collection:
+
+- Cloned the Users collection to use as a base
+- Added it as a collection to payload config file
+- Set up access controls as before
+- Added fields for title and content, making sure to specify the right options.
+
+8. Added an events.ts collection:
+
+- Cloned the Users collection to use as a base
+- Added it as a collection to payload config file
+- Added necessary fields, referring to the docs to add right config options
+
+## Troubleshooting
+
+I made use of the Payload [Discord](https://discord.com/invite/payload) to help me troubleshoot (mostly issues with the examples in the docs). In future I might use [Github Discussions](https://github.com/payloadcms/payload/discussions)as well.
+
+## If I had more time
+
+- I really enjoyed working with Payload and will continue to use it in future. I am particularly interested in experimenting with the following features:
+  - SEO features
+  - Search function with SSR
+  - Email functionality with Nodemailer
+  - Live preview
+  - Layout builder
