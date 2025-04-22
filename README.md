@@ -20,3 +20,17 @@
   - I tried implementing access controls as in the example above, but I had an issue with the types as how types are stored has changed within Payload version 3. I found a solution on the [Payload Discord](https://discord.com/channels/967097582721572934/1357468938564403382/1357468938564403382) but this only got me halfway as this example was no longer fully up to date so I found another [example](https://discord.com/channels/967097582721572934/1306486478859145256/1306849389511184456) that did work.
   - Implemented access controls using three functions to check the user's role as an admin or not, using the above two examples as a guide. I then set the CRUD permissions appropiately. I am not sure if this is the best solution, as I found something simpler online [here](https://dev.to/aaronksaunders/access-control-in-payload-cms-cheat-sheet-4fn) which might have suited my use case, but I decided to trust the more robust looking example on the Payload Github.
   - I reused the check role function to allow access to the admin panel only to the admin.
+  - I edited these three access functions considerably to satisfy typescript - if the user is undefined they will each return false.
+  - Added fields to the Users collection, making sure to set the right options:
+    - name, required and string - type:text
+    - email is already added by default
+    - Added roles fields with the options:
+      - setting options based on the example from the access docs and our specifications: Select, Required
+      - labels for roles - admin is Owner and user is Staff
+      - set the default role to Staff (user)
+- Added a pages.ts collection:
+  - Cloned the Users collection to use as a base
+  - Added it as a collection to payload config file
+- Added an events.ts collection:
+  - Cloned the Users collection to use as a base
+  - Added it as a collection to payload config file
