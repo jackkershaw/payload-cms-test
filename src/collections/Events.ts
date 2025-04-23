@@ -3,6 +3,21 @@ import { admins } from '../access/admins'
 import adminsAndUser from '../access/adminsAndUser'
 
 export const Events: CollectionConfig = {
+  // Add a beforeChange hook in events to set createdBy to the current user's ID on creation
+  hooks: {
+    beforeChange: [
+      async ({ req, operation, data }) => {
+        {
+          if (req.user) {
+            if (operation === 'create') {
+              data.createdBy = req.user?.id
+              return data
+            }
+          }
+        }
+      },
+    ],
+  },
   slug: 'events',
   versions: {
     drafts: true,
@@ -45,7 +60,7 @@ export const Events: CollectionConfig = {
       type: 'relationship',
       relationTo: 'users',
       required: true,
-//     - Make the createdBy field in events read-only after creation (use field-level access) //
+      //     - Make the createdBy field in events read-only after creation (use field-level access) //
       access: {
         create: () => true,
         read: () => true,
