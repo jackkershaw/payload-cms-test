@@ -2,10 +2,11 @@
 
 1. Install MongoDB if not already installed. Instructions [here](https://www.mongodb.com/docs/manual/installation/).
 2. `cp .env.example .env` to copy the example environment variables to a new .env file
-3. `pnpm install` to install dependencies
-4. `pnpm dev` to run dev server
-5. open `http://localhost:3000` to open the app in your browser
-6. Follow the on-screen instructions to create your first admin user.
+3. For dev MongoDB usage locally you can set your DATABASE_URI to something like "mongodb://127.0.0.1/payloadcms".
+4. `pnpm install` to install dependencies
+5. `pnpm dev` to run dev server
+6. open `http://localhost:3000` to open the app in your browser
+7. Follow the on-screen instructions to create your first admin user.
 
 # How I built this project (summary of my approach)
 
