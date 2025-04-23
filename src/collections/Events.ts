@@ -45,6 +45,12 @@ export const Events: CollectionConfig = {
       type: 'relationship',
       relationTo: 'users',
       required: true,
+//     - Make the createdBy field in events read-only after creation (use field-level access) //
+      access: {
+        create: () => true,
+        read: () => true,
+        update: () => false,
+      },
     },
   ],
 }
