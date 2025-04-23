@@ -48,6 +48,10 @@
 - Read up on [beforeChange hooks](https://payloadcms.com/docs/hooks/beforechange) and implemented a beforeChange hook to set the createdBy field to the current user's ID on creation. This involved figuring out how to pass the user id and operation type (create) to the hook. The example [here](https://payloadcms.com/community-help/github/how-to-add-audit-info-like-createdby-and-updatedby-similar-to-createdat-and-updatedat) was helpful in figuring out what to pass in and out of the hook.
 - I went back and edited the access controls for events so that staff could access their own events via createdBy. I did this by adding a new access function. I wrote this by duplicating the AdminsAndUser access function, passing data argument into it (I checked Access args) and then checking if user.id = data.createdby, and returning true if so. I liked being able to compartmentalise this logic into a separate function here.
 
+9. Switched to a new local MongoDB database, restarted my local dev and set up two users for testing purposes: one Owner (admin) and one Staff (user).
+
+10. Tested as follows:
+
 ## Troubleshooting
 
 I made use of the Payload [Discord](https://discord.com/invite/payload) to help me troubleshoot (mostly issues with the examples in the docs). In future I might use [Github Discussions](https://github.com/payloadcms/payload/discussions), the [Community Help section](https://payloadcms.com/community-help) or the [Reddit](https://www.reddit.com/r/PayloadCMS/). It makes me confident to use Payload in future given there is such a strong community behind it.
@@ -60,3 +64,4 @@ I made use of the Payload [Discord](https://discord.com/invite/payload) to help 
   - Email functionality with Nodemailer
   - Live preview
   - Layout builder
+  - Seeding databases (as in the Access Control demo)
