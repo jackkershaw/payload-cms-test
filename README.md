@@ -1,10 +1,11 @@
 # How to run locally
 
-1. `cp .env.example .env` to copy the example environment variables to a new .env file
-2. `pnpm install` to install dependencies
-3. `pnpm dev` to run dev server
-4. open `http://localhost:3000` to open the app in your browser
-5. Follow the on-screen instructions to create your first admin user.
+1. Install MongoDB if not already installed. Instructions [here](https://www.mongodb.com/docs/manual/installation/).
+2. `cp .env.example .env` to copy the example environment variables to a new .env file
+3. `pnpm install` to install dependencies
+4. `pnpm dev` to run dev server
+5. open `http://localhost:3000` to open the app in your browser
+6. Follow the on-screen instructions to create your first admin user.
 
 # How I built this project (summary of my approach)
 
@@ -42,10 +43,13 @@
 - Cloned the Users collection to use as a base
 - Added it as a collection to payload config file
 - Added necessary fields, referring to the docs to add right config options
+- Made the createdBy field read only after creation using [Field Level Access](https://payloadcms.com/docs/access-control/fields). Used simple arrow functions as in the [Access Control Demo](https://github.com/payloadcms/access-control-demo/blob/master/src/collections/ContactRequests.ts) to return false for update and true for create and read.
+- Read up on [beforeChange hooks](https://payloadcms.com/docs/hooks/beforechange) and implemented a beforeChange hook to set the createdBy field to the current user's ID on creation. This involved figuring out how to pass the user id and operation type (create) to the hook. The example [here](https://payloadcms.com/community-help/github/how-to-add-audit-info-like-createdby-and-updatedby-similar-to-createdat-and-updatedat) was helpful in figuring out what to pass in and out of the hook.
+- I went back and edited the access controls for events so that staff could access their own events via createdBy. I did this by adding a new access function. I wrote this by duplicating the AdminsAndUser access function, passing data argument into it (I checked Access args) and then checking if user.id = data.createdby, and returning true if so. I liked being able to compartmentalise this logic into a separate function here.
 
 ## Troubleshooting
 
-I made use of the Payload [Discord](https://discord.com/invite/payload) to help me troubleshoot (mostly issues with the examples in the docs). In future I might use [Github Discussions](https://github.com/payloadcms/payload/discussions)as well.
+I made use of the Payload [Discord](https://discord.com/invite/payload) to help me troubleshoot (mostly issues with the examples in the docs). In future I might use [Github Discussions](https://github.com/payloadcms/payload/discussions), the [Community Help section](https://payloadcms.com/community-help) or the [Reddit](https://www.reddit.com/r/PayloadCMS/). It makes me confident to use Payload in future given there is such a strong community behind it.
 
 ## If I had more time
 
