@@ -1,6 +1,7 @@
 import type { CollectionConfig } from 'payload'
 import { admins } from '../access/admins'
 import adminsAndUser from '../access/adminsAndUser'
+import adminsAndCreatedBy from '@/access/adminsAndCreatedBy'
 
 export const Events: CollectionConfig = {
   // Add a beforeChange hook in events to set createdBy to the current user's ID on creation
@@ -29,9 +30,9 @@ export const Events: CollectionConfig = {
     //     - **Create**: Allowed for Owner and Staff
     create: adminsAndUser,
     // - **Read**: Owner accesses all events; Staff only their own (via createdBy)
-    read: admins, // TODO: implement createdBy
+    read: adminsAndCreatedBy,
     // - **Update**: Owner updates all events; Staff only their own (via createdBy)
-    update: admins, // TODO: implement createdBy
+    update: adminsAndCreatedBy,
     // - **Delete**: Allowed only for Owner
     delete: admins,
   },
