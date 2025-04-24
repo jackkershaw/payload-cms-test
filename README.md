@@ -123,8 +123,9 @@
 
 - Noticed an issue where the dashboard wasn't loading for staff - this was because data was null. Added a question mark to the adminsandcreatedby access function to allow null values for data on load.
 - Events weren't showing up for the staff user so I debugged and realised the AdminsAndCreatedBy access function wasn't set up correctly. Instead of just returning true or false, I needed to filter the events based on user id, so i used a similar structure as the admins and user function to match where createdby equalled the user id. This solved all issues with events - whether creating or viewing them.
+- Pages weren't showing up for the staff user either, so I realised I needed to fix the AdminsAndUSer access function. This was as simple as just adding user to the list of checked roles next to admin - returning true for user as well as admin.
 
-## Troubleshooting
+## Troubleshooting tips
 
 I made use of the Payload [Discord](https://discord.com/invite/payload) to help me troubleshoot (mostly issues with the examples in the docs). In future I might use [Github Discussions](https://github.com/payloadcms/payload/discussions), the [Community Help section](https://payloadcms.com/community-help) or the [Reddit](https://www.reddit.com/r/PayloadCMS/). It makes me confident to use Payload in future given there is such a strong community behind it.
 
