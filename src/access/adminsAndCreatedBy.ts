@@ -2,13 +2,16 @@ import type { Access } from 'payload/'
 
 import { checkRole } from './checkRole'
 
-const adminsAndCreatedBy: Access = ({ req: { user }, data }) => {
+const adminsAndCreatedBy: Access = ({ req: { user } }) => {
   if (user) {
     if (checkRole(['admin'], user)) {
       return true
-    }
-    if (user.id === data?.createdBy) {
-      return true
+    } else {
+      return {
+        createdBy: {
+          equals: user.id,
+        },
+      }
     }
   }
   return false
