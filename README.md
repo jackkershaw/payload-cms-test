@@ -8,7 +8,7 @@
 6. open `http://localhost:3000` to open the app in your browser
 7. Follow the on-screen instructions to create your first admin user.
 
-# How I built this project (summary of my approach)
+# How I built this project
 
 1. Ran `pnpx create-payload-app@latest` to create new Payload website, selecting MongoDB. Since this is a project to learn and demonstrate the basics of Payload, I chose to use the blank template rather than adding it to a Next.js project.
 2. Ran `pnpm dev` to run dev server
@@ -50,7 +50,7 @@
 
 9. Switched to a new local MongoDB database, restarted my local dev and set up two users for testing purposes: one Owner (admin) and one Staff (user).
 
-10. Tested as follows:
+10. Started testing, by signing into the Owner account in Firefox and Staff account in Safari. I tested each, collection by collection, to meet the following test scenarios:
 
 - Owner :
 
@@ -125,18 +125,20 @@
 - Events weren't showing up for the staff user so I debugged and realised the AdminsAndCreatedBy access function wasn't set up correctly. Instead of just returning true or false, I needed to filter the events based on user id, so i used a similar structure as the admins and user function to match where createdby equalled the user id. This solved all issues with events - whether creating or viewing them.
 - Pages weren't showing up for the staff user either, so I realised I needed to fix the AdminsAndUSer access function. This was as simple as just adding user to the list of checked roles next to admin - returning true for user as well as admin.
 
-## Troubleshooting tips
-
-I made use of the Payload [Discord](https://discord.com/invite/payload) to help me troubleshoot (mostly issues with the examples in the docs). In future I might use [Github Discussions](https://github.com/payloadcms/payload/discussions), the [Community Help section](https://payloadcms.com/community-help) or the [Reddit](https://www.reddit.com/r/PayloadCMS/). It makes me confident to use Payload in future given there is such a strong community behind it.
-
 ## If I had more time
 
 - Custom frontend for Staff to edit the site without the admin panel.
 - Add alt text to the testing screenshots in this README to improve accessibility.
+- Add more comments to explain code.
+- Add error handling to the beforeChange hook.
 - I really enjoyed working with Payload and will continue to use it in future. I am particularly interested in experimenting with the following features:
   - SEO features
   - Search function with SSR
   - Email functionality with Nodemailer
-  - Live preview
+  - Live preview (I've heard this is a much easier process than in a traditional (PHP) CMS)
   - Layout builder
   - Seeding databases (as in the Access Control demo)
+
+## Troubleshooting tips
+
+I made use of the Payload [Discord](https://discord.com/invite/payload) to help me troubleshoot (mostly issues with the examples in the docs). In future I might use [Github Discussions](https://github.com/payloadcms/payload/discussions), the [Community Help section](https://payloadcms.com/community-help) or the [Reddit](https://www.reddit.com/r/PayloadCMS/). It makes me confident to use Payload in future given there is such a strong community behind it.
