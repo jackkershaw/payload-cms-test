@@ -52,6 +52,49 @@
 
 10. Tested as follows:
 
+- Owner :
+
+  - Can create, read, update, and delete any event, user, or page.
+
+    - ✅ Create users
+      ![alt text](<CleanShot 2025-04-24 at 12.58.48@2x.png>)
+    - ✅ Read users
+      ![alt text](<CleanShot 2025-04-24 at 12.57.49@2x.png>)
+    - ✅ Update users
+      ![alt text](<CleanShot 2025-04-24 at 12.59.55@2x.png>)
+    - ✅ Delete users
+      ![alt text](<CleanShot 2025-04-24 at 13.00.25@2x.png>)
+    - Create Events
+    - Read Events
+    - Update Events
+    - Delete Events
+    - Create Pages
+    - Read Pages
+    - Update Pages
+    - Delete Pages
+
+  - ✅ Accesses admin UI for all collections
+    - ![Payload CMS Admin UI, with Users, Media, Pages and Events collections shown](<CleanShot 2025-04-24 at 12.47.44@2x.png>)
+
+- Staff :
+
+  - Can create events (auto-assigned via createdBy).
+  - Can read and update only their own events.
+  - Can create, read, and update pages but not delete.
+  - Cannot access admin UI for users.
+
+- Unauthenticated User :
+
+  - ✅ No access to any operations or admin UI.
+    ![Payload CMS login screen](<CleanShot 2025-04-24 at 12.50.51@2x.png>)
+  - ✅ Verify security and functionality.
+    - No access to anything but the frontpage.
+      ![A Payload CMS template frontpage](<CleanShot 2025-04-24 at 12.52.02@2x.png>)
+
+11. During testing I found the following issues and debugged them:
+
+- Noticed an issue where the dashboard wasn't loading for staff - this was because data was null. Added a question mark to the adminsandcreatedby access function to allow null values for data on load.
+
 ## Troubleshooting
 
 I made use of the Payload [Discord](https://discord.com/invite/payload) to help me troubleshoot (mostly issues with the examples in the docs). In future I might use [Github Discussions](https://github.com/payloadcms/payload/discussions), the [Community Help section](https://payloadcms.com/community-help) or the [Reddit](https://www.reddit.com/r/PayloadCMS/). It makes me confident to use Payload in future given there is such a strong community behind it.
