@@ -4,9 +4,11 @@ import { checkRole } from './checkRole'
 
 const adminsAndCreatedBy: Access = ({ req: { user } }) => {
   if (user) {
+    // admins can see everything
     if (checkRole(['admin'], user)) {
       return true
     } else {
+      // non admins can only see what they created - where createdBy = user.id
       return {
         createdBy: {
           equals: user.id,
