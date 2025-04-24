@@ -54,7 +54,7 @@
 
 - Owner :
 
-  - Can create, read, update, and delete any event, user, or page.
+  - ✅ Can create, read, update, and delete any event, user, or page.
 
     - ✅ Create users
       ![alt text](<CleanShot 2025-04-24 at 12.58.48@2x.png>)
@@ -64,36 +64,65 @@
       ![alt text](<CleanShot 2025-04-24 at 12.59.55@2x.png>)
     - ✅ Delete users
       ![alt text](<CleanShot 2025-04-24 at 13.00.25@2x.png>)
-    - Create Events
-    - Read Events
-    - Update Events
-    - Delete Events
-    - Create Pages
-    - Read Pages
-    - Update Pages
-    - Delete Pages
+    - ✅ Create Events
+      ![alt text](<CleanShot 2025-04-24 at 21.12.43@2x.png>)
+    - ✅ Read Events
+      ![alt text](<CleanShot 2025-04-24 at 21.12.16@2x.png>)
+    - ✅ Update Events
+      ![alt text](<CleanShot 2025-04-24 at 21.17.35@2x.png>)
+    - ✅ Delete Events
+      ![alt text](<CleanShot 2025-04-24 at 21.27.05@2x.png>)
+    - ✅ Create Pages
+      ![alt text](<CleanShot 2025-04-24 at 21.26.19@2x.png>)
+    - ✅ Read Pages
+      ![alt text](<CleanShot 2025-04-24 at 21.27.40@2x.png>)
+    - ✅ Update Pages
+      ![alt text](<CleanShot 2025-04-24 at 21.28.08@2x.png>)
+    - ✅ Delete Pages
+      ![alt text](<CleanShot 2025-04-24 at 21.29.16@2x.png>)
 
   - ✅ Accesses admin UI for all collections
     - ![Payload CMS Admin UI, with Users, Media, Pages and Events collections shown](<CleanShot 2025-04-24 at 12.47.44@2x.png>)
 
 - Staff :
 
-  - Can create events (auto-assigned via createdBy).
-  - Can read and update only their own events.
+  - Testing this was slightly harder, as this would normally require a custom frontend for editors or to use Postman. Whilst that approach would be more robust, and something I would do if I had more time/was making a production app, I hacked this by temporarily commenting out my function for only giving admins access to the admin panel. This way I could test with the admin panel and provide easy-to-understand admin screenshots.
+
+  - ✅Can create events (auto-assigned via createdBy).
+    ![alt text](<CleanShot 2025-04-24 at 21.34.43@2x.png>)
+    ![alt text](<CleanShot 2025-04-24 at 21.34.59@2x.png>)
+
+  - ✅ Can read and update only their own events.
+
+    - ✅ Read own events
+      ![alt text](<CleanShot 2025-04-24 at 21.11.11@2x.png>)
+    - ✅ Update own events
+      ![alt text](<CleanShot 2025-04-24 at 21.15.55@2x.png>)
+
   - Can create, read, and update pages but not delete.
-  - Cannot access admin UI for users.
+    - ✅ Create pages
+      ![alt text](<CleanShot 2025-04-24 at 16.55.11@2x.png>)
+    - ✅ Read pages
+      ![alt text](<CleanShot 2025-04-24 at 21.30.49@2x.png>)
+    - ✅ Update pages
+      ![alt text](<CleanShot 2025-04-24 at 21.31.30@2x.png>)
+    - ✅ Not delete pages
+      ![alt text](<CleanShot 2025-04-24 at 21.31.54@2x.png>)
+  - ✅ Cannot access admin UI for users.
+    ![alt text](<CleanShot 2025-04-24 at 16.48.31@2x.png>)
 
 - Unauthenticated User :
 
   - ✅ No access to any operations or admin UI.
     ![Payload CMS login screen](<CleanShot 2025-04-24 at 12.50.51@2x.png>)
   - ✅ Verify security and functionality.
-    - No access to anything but the frontpage.
+    - ✅ No access to anything but the frontpage.
       ![A Payload CMS template frontpage](<CleanShot 2025-04-24 at 12.52.02@2x.png>)
 
 11. During testing I found the following issues and debugged them:
 
 - Noticed an issue where the dashboard wasn't loading for staff - this was because data was null. Added a question mark to the adminsandcreatedby access function to allow null values for data on load.
+- Events weren't showing up for the staff user so I debugged and realised the AdminsAndCreatedBy access function wasn't set up correctly. Instead of just returning true or false, I needed to filter the events based on user id, so i used a similar structure as the admins and user function to match where createdby equalled the user id. This solved all issues with events - whether creating or viewing them.
 
 ## Troubleshooting
 
@@ -101,6 +130,8 @@ I made use of the Payload [Discord](https://discord.com/invite/payload) to help 
 
 ## If I had more time
 
+- Custom frontend for Staff to edit the site without the admin panel.
+- Add alt text to the testing screenshots in this README to improve accessibility.
 - I really enjoyed working with Payload and will continue to use it in future. I am particularly interested in experimenting with the following features:
   - SEO features
   - Search function with SSR
