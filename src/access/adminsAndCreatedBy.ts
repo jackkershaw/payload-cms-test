@@ -4,7 +4,7 @@ import { checkRole } from './checkRole'
 
 const adminsAndCreatedBy: Access = ({ req: { user } }) => {
   if (user) {
-    // admins can see everything
+    // admins can see everything - returns true for everything
     if (checkRole(['admin'], user)) {
       return true
     } else {
